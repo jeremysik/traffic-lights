@@ -7,8 +7,10 @@
 <main>
 
 	<h3>
-		Sped up visual display (20x)
+		Visual Representation (20x speed)
 	</h3>
+
+	Time: {{ spedUpDisplayTime }}
 
 	<md-grid-list cols="3" rowHeight="60px" style="width: 180px">
 		<md-grid-tile></md-grid-tile>
@@ -23,8 +25,33 @@
 	</md-grid-list>
 
 	<h3>
-		Output
+		Output (0 to 30m)
 	</h3>
+
+	<table>
+		<tr>
+			<th style="width: 80px">
+				Time
+			</th>
+			<th style="width: 80px">
+				North/South
+			</th>
+			<th style="width: 80px">
+				East/West
+			</th>
+		</tr>
+		<tr *ngFor="let stateChange of outputDisplay">
+			<td>
+				{{ stateChange[0] }}
+			</td>
+			<td [style.background]="stateChange[1]">
+				{{ stateChange[1] }}
+			</td>
+			<td [style.background]="stateChange[2]">
+				{{ stateChange[2] }}
+			</td>
+		</tr>
+	</table>
   
 </main>
 

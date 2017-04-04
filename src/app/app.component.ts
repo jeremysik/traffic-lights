@@ -1,4 +1,4 @@
-//import * as _ from "lodash";
+import * as _ from "lodash";
 
 import { Component } from '@angular/core';
 import { IntersectionModel } from './models/IntersectionModel';
@@ -14,6 +14,8 @@ export class AppComponent {
 	public outputIntersection:IntersectionModel;
 
 	public outputDisplay:string[][] = [];
+	public spedUpDisplayTime:string = '00:00:00';
+	private spedUpDisplaySeconds:number = 0;
 
 	constructor() {
 		this.displayIntersection = new IntersectionModel();
@@ -22,20 +24,25 @@ export class AppComponent {
 		// Start the display model
 		setInterval(() => {
 			this.displayIntersection.tick();
+			this.spedUpDisplayTime = this.secondsToTimeString(++this.spedUpDisplaySeconds);
 		}, 50);
 
 		// Quickly output all state changes from 0 to 30 minutes
-		this.outputDisplay.push(['00:00:00',this.outputIntersection.northSouthLight.color,this.outputIntersection.eastWestLight.color]);
-		for(let i = 1; i < 1801; i++) {
-			if(this.outputDisplay[this.outputDisplay.length - 1][1] != this.outputIntersection.northSouthLight.color || this.outputDisplay[this.outputDisplay.length - 1][2] != this.outputIntersection.eastWestLight.color) {
-				let date = new Date(null);
-				date.setSeconds(i);
-				var timeString = date.toISOString().substr(11, 8);
-				this.outputDisplay.push([timeString,this.outputIntersection.northSouthLight.color,this.outputIntersection.eastWestLight.color]);
+		this.outputDisplay.push(['00:00:00', this.outputIntersection.northSouthLight.color, this.outputIntersection.eastWestLight.color]);
+		for(let i = 0; i < 1801; i++) {
+			let lastArrayEntry:string[] = _.last(this.outputDisplay);
+
+			if(lastArrayEntry[1] != this.outputIntersection.northSouthLight.color || lastArrayEntry[2] != this.outputIntersection.eastWestLight.color) {
+				this.outputDisplay.push([this.secondsToTimeString(i), this.outputIntersection.northSouthLight.color, this.outputIntersection.eastWestLight.color]);
 			}
 
 			this.outputIntersection.tick();
 		}
+	}
 
+	private secondsToTimeString(seconds:number):string {
+		let date = new Date(null);
+		date.setSeconds(seconds);
+		return date.toISOString().substr(11, 8);
 	}
 }
