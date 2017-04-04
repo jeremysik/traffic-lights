@@ -14,7 +14,8 @@ export class TrafficLightModel {
 		this.nextState.handle(this);
 	}
 
-	public toggle():void {
+	// A clock should call this function on every tick
+	public tick():void {
 		this.waitSeconds--;
 		if(this.waitSeconds == 0) {
 			this.nextState.handle(this);

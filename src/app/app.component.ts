@@ -21,13 +21,13 @@ export class AppComponent {
 		this.displayIntersection = new IntersectionModel();
 		this.outputIntersection = new IntersectionModel();
 
-		// Start the display model
+		// Start the display model, use setInterval as a clock but speed up by 20x
 		setInterval(() => {
 			this.displayIntersection.tick();
 			this.spedUpDisplayTime = this.secondsToTimeString(++this.spedUpDisplaySeconds);
 		}, 50);
 
-		// Quickly output all state changes from 0 to 30 minutes
+		// Quickly output all state changes from 0 to 30 minutes, use a for-loop as a clock
 		this.outputDisplay.push(['00:00:00', this.outputIntersection.northSouthLight.color, this.outputIntersection.eastWestLight.color]);
 		for(let i = 0; i < 1801; i++) {
 			let lastArrayEntry:string[] = _.last(this.outputDisplay);
