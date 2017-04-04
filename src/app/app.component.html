@@ -1,0 +1,32 @@
+<h2>
+ 	Intersection
+</h2>
+
+<p>I have made the assumption that the state of the light will change from red to green and back every 5 minutes (i.e. yellow light occurs from 4 minutes 30 seconds to 5 minutes in the cycle).</p>
+
+<main>
+
+	<h3>
+		Sped up visual display (20x)
+	</h3>
+
+	<md-grid-list cols="3" rowHeight="60px" style="width: 180px">
+		<md-grid-tile></md-grid-tile>
+		<md-grid-tile [style.background]="displayIntersection.northSouthLight.color">{{ displayIntersection.northSouthLight.color }}</md-grid-tile>
+		<md-grid-tile></md-grid-tile>
+		<md-grid-tile [style.background]="displayIntersection.eastWestLight.color">{{ displayIntersection.eastWestLight.color }}</md-grid-tile>
+		<md-grid-tile></md-grid-tile>
+		<md-grid-tile [style.background]="displayIntersection.eastWestLight.color">{{ displayIntersection.eastWestLight.color }}</md-grid-tile>
+		<md-grid-tile></md-grid-tile>
+		<md-grid-tile [style.background]="displayIntersection.northSouthLight.color">{{ displayIntersection.northSouthLight.color}}</md-grid-tile>
+		<md-grid-tile></md-grid-tile>
+	</md-grid-list>
+
+	<h3>
+		Output
+	</h3>
+  
+</main>
+
+<footer>
+</footer>
