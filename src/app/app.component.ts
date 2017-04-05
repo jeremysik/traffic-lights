@@ -14,7 +14,7 @@ export class AppComponent {
 	public outputIntersection:IntersectionModel;
 
 	public outputDisplay:string[][] = [];
-	public spedUpDisplayTime:string = '00:00:00';
+	public spedUpDisplayTime:string = '00:00';
 	private spedUpDisplaySeconds:number = 0;
 
 	constructor() {
@@ -28,7 +28,7 @@ export class AppComponent {
 		}, 50);
 
 		// Quickly output all state changes from 0 to 30 minutes, use a for-loop as a clock
-		this.outputDisplay.push(['00:00:00', this.outputIntersection.northSouthLight.color, this.outputIntersection.eastWestLight.color]);
+		this.outputDisplay.push(['00:00', this.outputIntersection.northSouthLight.color, this.outputIntersection.eastWestLight.color]);
 		for(let i = 0; i < 1801; i++) {
 			let lastArrayEntry:string[] = _.last(this.outputDisplay);
 
@@ -44,6 +44,6 @@ export class AppComponent {
 	private secondsToTimeString(seconds:number):string {
 		let date = new Date(null);
 		date.setSeconds(seconds);
-		return date.toISOString().substr(11, 8);
+		return date.toISOString().substr(14, 5);
 	}
 }
