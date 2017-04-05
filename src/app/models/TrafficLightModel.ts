@@ -1,7 +1,5 @@
-import { ITrafficLightState } from './ITrafficLightState';
+import { ITrafficLightState, ValidLightState } from './ITrafficLightState';
 import { RedLightState } from './RedLightState';
-
-type ValidLightState = 'red'|'yellow'|'green';
 
 export class TrafficLightModel {
 

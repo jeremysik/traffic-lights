@@ -1,12 +1,15 @@
-import { ITrafficLightState } from './ITrafficLightState';
+import { ITrafficLightState, ValidLightState } from './ITrafficLightState';
 import { TrafficLightModel } from './TrafficLightModel';
 import { RedLightState } from './RedLightState';
 
 export class YellowLightState implements ITrafficLightState {
 
+	readonly waitSeconds:number = 30;
+	readonly color:ValidLightState = 'yellow';
+
 	public handle(trafficLight:TrafficLightModel):void {
-		trafficLight.color = 'yellow';
-		trafficLight.waitSeconds = 30;
+		trafficLight.color = this.color;
+		trafficLight.waitSeconds = this.waitSeconds;
 		trafficLight.nextState = new RedLightState();
 	}
 }

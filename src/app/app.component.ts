@@ -40,6 +40,7 @@ export class AppComponent {
 		}
 	}
 
+	// @todo: Replace with moment.js
 	private secondsToTimeString(seconds:number):string {
 		let date = new Date(null);
 		date.setSeconds(seconds);
