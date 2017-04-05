@@ -27,6 +27,7 @@ Run unit tests (requires Chrome):
 ```shell
 npm test
 ```
+When tests have completed, shut it down manually with `Ctrl-C`.
 
 Run the simulation (this should open a new browser window):
 ```shell
