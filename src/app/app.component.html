@@ -1,0 +1,59 @@
+<h1>
+ 	Intersection Challenge
+</h1>
+
+<p>I have made the assumption that the state of the light will change from red to green and back every 5 minutes (i.e. yellow light occurs from 4 minutes 30 seconds to 5 minutes in the cycle).</p>
+
+<main>
+
+	<h2>
+		Visual Representation (20x speed)
+	</h2>
+
+	Time: {{ spedUpDisplayTime }}
+
+	<md-grid-list cols="3" rowHeight="60px" style="width: 180px">
+		<md-grid-tile></md-grid-tile>
+		<md-grid-tile [style.background]="displayIntersection.northSouthLight.color">{{ displayIntersection.northSouthLight.color }}</md-grid-tile>
+		<md-grid-tile></md-grid-tile>
+		<md-grid-tile [style.background]="displayIntersection.eastWestLight.color">{{ displayIntersection.eastWestLight.color }}</md-grid-tile>
+		<md-grid-tile></md-grid-tile>
+		<md-grid-tile [style.background]="displayIntersection.eastWestLight.color">{{ displayIntersection.eastWestLight.color }}</md-grid-tile>
+		<md-grid-tile></md-grid-tile>
+		<md-grid-tile [style.background]="displayIntersection.northSouthLight.color">{{ displayIntersection.northSouthLight.color}}</md-grid-tile>
+		<md-grid-tile></md-grid-tile>
+	</md-grid-list>
+
+	<h2>
+		Output (0 to 30m)
+	</h2>
+
+	<table>
+		<tr>
+			<th style="width: 80px">
+				Time
+			</th>
+			<th style="width: 80px">
+				North/South
+			</th>
+			<th style="width: 80px">
+				East/West
+			</th>
+		</tr>
+		<tr *ngFor="let stateChange of outputDisplay">
+			<td>
+				{{ stateChange[0] }}
+			</td>
+			<td [style.background]="stateChange[1]">
+				{{ stateChange[1] }}
+			</td>
+			<td [style.background]="stateChange[2]">
+				{{ stateChange[2] }}
+			</td>
+		</tr>
+	</table>
+  
+</main>
+
+<footer>
+</footer>
